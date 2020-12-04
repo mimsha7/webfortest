@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% load static %}
+<img src="{% static 'image/' %}">
+
+<div class="row d-block">
+    <!--<p>Name: {{name | default:'No Name'}}</p>
+    <p>Email: {{email | default:'No Email'}}</p>
+    <p> Address: {{address | default:'No Address'}}</p>
+    <p> City: {{city | default:'No City'}}</p>
+    <p> Zip: {{zip | default:'No Zip Code'}}</p> -->
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+       <th> নামঃ </th>
+          <th> ইমেইলঃ </th>
+          <th> মোবাইল নম্বরঃ </th>
+          <th> পেশাঃ </th>
+          <th> ঠিকানাঃ </th>
+          <th colspan=2>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in rows%}
+        <tr>
+        <td>{{row.name}}</td>
+        <td>{{row.email}}</td>
+        <td>{{row.address}}</td>
+        <td>{{row.city}}</td>
+        <td>{{row.zipcode}}</td>
+        <td><a href="/contact?id={{row.id}}&method=edit"> Edit </a></td>
+        <td><a href="/contact?id={{row.id}}&method=delete"> Delete </a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  
+
+{% endblock %}

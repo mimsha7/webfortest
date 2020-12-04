@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="home">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Deposits <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact/">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Career</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Download link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="about.html">Action</a>
+          <a class="dropdown-item" href="contact.html">Another action</a>
+          <a class="dropdown-item" href="index.html">Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <form method="POST" action="/contact/">
+      <br>
+    <div class="form-row">
+        <div class="form-row col-md-10">
+            {% csrf_token  %}
+        </div>
+    </div>
+  <div class="form-row">
+      <div class="form-group col-md-8">
+      <label for="inputName">নামঃ</label>
+      <input name="name" type="text" class="form-control" id="inputName">
+    </div>
+    <div class="form-group col-md-8">
+      <label for="inputEmail">ইমেইলঃ</label>
+      <input name="email" type="email" class="form-control" id="inputEmail">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="inputZip">মোবাইল নম্বরঃ</label>
+      <input name="zipcode" type="text" class="form-control" id="inputZip">
+    </div>
+    <div class="form-group col-md-8">
+      <label for="inputCity">পেশাঃ</label>
+      <input name="city" type="text" class="form-control" id="inputCity">
+    </div>
+
+    <div class="form-group col-md-8">
+      <label for="inputAddress">ঠিকানাঃ</label>
+      <input name="address" type="text" class="form-control" id="inputAddress">
+    </div>
+  </div>
+  <button name="submit" style="color: whitesmoke; border: skyblue; background: tomato;" type="submit" class="btn btn-primary">সাইন ইন করুন</button>
+</form>
+{% endblock %} 
