@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from webpages.models import Contact
+from django.contrib.auth.models import User
 
 # Create your views here.
 def home(request):
@@ -36,6 +37,11 @@ def contact(request):
 
     cnt = Contact.objects.all()
     return render(request, 'contact.html', {'title':'Sign Up Page', 'rows' : cnt})
+
+
+
+
+
 def about(request):
     return render(request, 'about.html', {'title':'About Page Title'})
 

@@ -7,3 +7,4 @@ class Contact(models.Model):
      address = models.CharField(max_length=254)
      city = models.CharField(max_length=150)
      zipcode = models.CharField(max_length=15)
+
