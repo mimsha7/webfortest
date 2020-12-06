@@ -1,12 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from webpages.models import Contact
-from django.contrib.auth.models import User
 
 # Create your views here.
 def home(request):
+
     return render(request, 'index.html', {'title':'Home Page Title'})
+
+
 def contact(request):
+    post = Contact.objects.all().first()
+    post.views = post.views + 1
+    post.save()
+
     if (request.GET.get('method') == 'delete' and request.GET.get('id')):
      rec = Contact.objects.filter(id=request.GET.get('id'))
      rec.delete()
@@ -36,7 +42,8 @@ def contact(request):
         data.save()
 
     cnt = Contact.objects.all()
-    return render(request, 'contact.html', {'title':'Sign Up Page', 'rows' : cnt})
+
+    return render(request, 'contact.html', {'title':'Sign Up Page', 'rows' : cnt, 'post' : post})
 
 
 
@@ -48,4 +55,4 @@ def about(request):
 def member(request, id):
     return HttpResponse("<h1> Group Member ID: {}" .format(id))
 def group(request):
-    return HttpResponse("<h1> Group Members List </h1>")
+    return HttpResponse("<h1> Support Members List </h1>")
